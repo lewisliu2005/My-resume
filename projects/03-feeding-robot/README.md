@@ -23,15 +23,17 @@
 | **② 送到嘴邊** | 使用者頭部位置因人而異且會移動 | **YOLO 嘴部偵測 + RGB-D 深度相機 + ROS MoveIt 動態規劃** | 🚧 ROS / MoveIt 驅動已完成，視覺整合中 |
 
 ```mermaid
-flowchart TB
+flowchart LR
     S([開始餵食]) --> A
     subgraph P1["第一階段：挖取食物（固定路徑）"]
+        direction TB
         A[預先手動示教軌跡] --> B[儲存各關節角度與時間戳 JSON]
         B --> C[依時間戳驅動六軸馬達]
         C --> D[重複執行固定挖取動作]
     end
     D --> E
     subgraph P2["第二階段：送食至嘴邊（動態路徑）"]
+        direction TB
         E[RGB-D 深度相機影像] --> F[YOLO 偵測嘴部位置]
         F --> G[轉換為 3D 空間座標]
         G --> H[ROS MoveIt 運動規劃]
