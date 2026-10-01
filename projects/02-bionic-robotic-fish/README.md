@@ -60,7 +60,12 @@ flowchart LR
 
 **仿生游動模型**　參考 *Swimming of robotic fish based biologically-inspired approach*：
 
-$$A_i(t) = k_i \cdot A_{m_i} \cdot \sin(2\pi f t - \theta_i) + A_{m_i} \cdot \Delta(t)$$
+```
+Aᵢ(t) = kᵢ · Amᵢ · sin(2πft − θᵢ) + Amᵢ · Δ(t)
+
+Aᵢ(t)：第 i 顆馬達在時間 t 的擺動角度    kᵢ：振幅增益係數    Amᵢ：最大振幅
+f：擺動頻率（控制游速）    θᵢ：各節段相位差（形成波浪運動）    Δ(t)：連續相位偏移修正項（轉向）
+```
 
 改良為可平滑過渡的連續控制形式，依導航需求動態調整振幅與頻率；並利用串口馬達的位置回饋預測起始擺動位置，消除啟動時的不自然抽動。
 
